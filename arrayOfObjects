@@ -1,0 +1,29 @@
+var customers = [];
+
+var header = msg.row[0];
+
+for(var i=1;i<msg['row'].length();i++)
+
+{
+
+	var cust = {};
+
+	for (col in msg.row[i].children()) {
+
+		var columnName = header.children()[col];
+
+		//set the customer property, by name, based on the name of the column in the header row
+
+		cust[columnName] = msg['row'][i].children()[col].toString();
+
+	}
+
+	customers.push(cust);
+
+}
+
+
+
+//you now have an array of customer objects. 
+
+channelMap.put("customers", customers);
